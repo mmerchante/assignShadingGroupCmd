@@ -4,6 +4,7 @@ assignShadingGroupCmd
 A Maya API command that assigns a shading group to a collection of shapes.
 
 An exercise for learning Maya's API; python is chosen due to its portability.
+MFnSet was not used for learning purposes :)
 The equivalent MEL script would be:
 
 ```
