@@ -78,14 +78,14 @@ class assignShadingGroupCommand(OpenMayaMPx.MPxCommand):
             # Filter by dag nodes
             if iter.itemType() == OpenMaya.MItSelectionList.kDagSelectionItem:
                 
-                dagNode = OpenMaya.MDagPath()   
-                iter.getDagPath(dagNode)            
-                dagNode.extendToShape()
+                dagPath = OpenMaya.MDagPath()   
+                iter.getDagPath(dagPath)            
+                dagPath.extendToShape()
                 
-                instObjGroupsAttr = OpenMaya.MFnDagNode(dagNode).attribute('instObjGroups')         
+                instObjGroupsAttr = OpenMaya.MFnDagNode(dagPath).attribute('instObjGroups')         
                 
-                instPlugArray = OpenMaya.MPlug(dagNode.node(), instObjGroupsAttr)       
-                instPlugArrayElem = instPlugArray.elementByLogicalIndex(dagNode.instanceNumber())
+                instPlugArray = OpenMaya.MPlug(dagPath.node(), instObjGroupsAttr)       
+                instPlugArrayElem = instPlugArray.elementByLogicalIndex(dagPath.instanceNumber())
                 
                 # If instance already has connections, disconnect them
                 if instPlugArrayElem.isConnected():
